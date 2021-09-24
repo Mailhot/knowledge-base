@@ -5,6 +5,7 @@ from notes.notes_routes import notes_bp
 from recipes.recipes_routes import recipes_bp
 from scripts.scripts_routes import scripts_bp
 from searches.searches_routes import searches_bp
+from flask_wtf.csrf import CSRFProtect
 
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ app.register_blueprint(recipes_bp)
 app.register_blueprint(scripts_bp)
 app.register_blueprint(searches_bp)
 app.config.from_object("config")
+csrf.init_app(app)
 
 
 @app.route("/")
